@@ -63,7 +63,7 @@ COMPLETION_WAITING_DOTS="true"
 # "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # or set a custom format using the strftime function format specifications,
 # see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
+HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
@@ -73,7 +73,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -92,6 +92,16 @@ source $ZSH/oh-my-zsh.sh
 # fi
 export EDITOR='vim'
 export VISUAL='vim'
+
+# Directory changing
+setopt CDABLE_VARS
+setopt NO_AUTO_PUSHD
+
+# History behavior
+setopt HIST_IGNORE_SPACE
+setopt HIST_REDUCE_BLANKS
+setopt NO_HIST_VERIFY
+setopt BANG_HIST
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -122,3 +132,4 @@ alias untgz='tar -xvzf'
 alias hex2dec='echo 16i \!$ p | tr a-f A-F |dc'
 alias dec2hex='echo 16o \!$ p |dc | tr A-F a-f'
 
+alias ctags='/usr/local/bin/ctags'

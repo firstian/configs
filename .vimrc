@@ -22,10 +22,21 @@ Plugin 'vim-scripts/indentpython.vim'
 Plugin 'scrooloose/nerdtree'
 
 Plugin 'rafi/awesome-vim-colorschemes'
+Plugin 'nvie/vim-flake8'
+Plugin 'stephpy/vim-yaml'
+Plugin 'chiel92/vim-autoformat'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
+
+" Change the leader key to ',' from '\'
+let mapleader = ","
+
+" Python development
+" Execute current script
+nmap <Leader>p :w<CR>:!python3 %<CR>
+
 
 " Set up split so the cursor end up in the new split buffer
 set splitbelow
@@ -50,7 +61,7 @@ nnoremap <space> za
 " not to break on words
 set linebreak
 
-" fixing up moving line by line int he paragraph
+" fixing up moving line by line in the paragraph
 nnoremap j gj
 nnoremap k gk
 vnoremap j gj
@@ -72,6 +83,8 @@ set hlsearch
 
 " " Toggle highlighting on/off.
 :noremap <F4> :set hls!<CR>:set hls?<CR>
+
+map <C-x> :NERDTreeToggle<CR>
 
 " Exit quickly when:
 " - this plugin was already loaded
@@ -131,6 +144,7 @@ if has("autocmd")
 	augroup python
 		au BufNewFile,BufRead *.py
 		\ set ts=4 sts=4 sw=4 tw=79 expandtab autoindent fileformat=unix nu
+		autocmd FileType python map <buffer> <Leader>f :call Flake8()<CR>
 	augroup END
 
 	augroup html
@@ -148,6 +162,9 @@ if has("autocmd")
 	  au BufWritePost *.bin,*.BIN,*.exe,*.o,*.obj,*.OBJ,*.rom,*.ROM if &bin | %!xxd
 	  au BufWritePost *.bin,*.BIN,*.exe,*.o,*.obj,*.OBJ,*.rom,*.ROM set nomod | endif
 	augroup END
+	" add yaml stuffs
+	au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
+	autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 else
 	set autoindent	" always on if no autocmd support
 
@@ -158,6 +175,9 @@ set cinoptions=+4,(4,g0,x
 
 let python_highlight_all=1
 syntax enable
+
+" Set up vim to look for tags file in parent directories.
+set tags=tags;/
 
 " Below are sourced from
 " https://github.com/changemewtf/no_plugins/blob/master/no_plugins.vim
