@@ -78,13 +78,13 @@ set hlsearch
 " Press Space to turn off highlighting and blank message.
 " :noremap <silent> <Space> :silent noh<bar>:echo ""<CR> conflict with za
 
-" " Press Ctrl-N to turn off highlighting.
-:noremap <silent> <C-N> :silent noh<CR>
+" Move the annoying F1 to open BufExplorer.
+map <F1> :BufExplorer<CR>
 
 " " Toggle highlighting on/off.
 :noremap <F4> :set hls!<CR>:set hls?<CR>
 
-map <C-x> :NERDTreeToggle<CR>
+map <silent> <C-n> :NERDTreeToggle<CR>
 
 " Exit quickly when:
 " - this plugin was already loaded
