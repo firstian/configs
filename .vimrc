@@ -19,12 +19,14 @@ Plugin 'tmhedberg/SimpylFold'
 let g:SimpylFold_docstring_preview=1
 
 Plugin 'vim-scripts/indentpython.vim'
+Plugin 'jlanzarotta/bufexplorer'
 Plugin 'scrooloose/nerdtree'
 
 Plugin 'rafi/awesome-vim-colorschemes'
 Plugin 'nvie/vim-flake8'
 Plugin 'stephpy/vim-yaml'
 Plugin 'chiel92/vim-autoformat'
+Plugin 'bitc/vim-bad-whitespace'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -121,54 +123,54 @@ augroup END
 
 " Turn on programming specific options
 set showmatch
-if has("autocmd")
-	filetype plugin indent on
-	:highlight BadWhitespace ctermfg=16 ctermbg=253 guifg=#000000 guibg=#F8F8F0
+:highlight BadWhitespace ctermfg=16 ctermbg=253 guifg=#000000 guibg=#F8F8F0
 
-	au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
-	augroup vimrcEx
-		au!
-		autocmd BufReadPost *
-		\ if line("'\"") > 0 && line("'\"") <= line("$") |
-		\   exe "normal g`\"" |
-		\ endif
+augroup vimrcEx
+  au!
+  au BufReadPost *
+        \ if line("'\"") > 0 && line("'\"") <= line("$") |
+        \   exe "normal g`\"" |
+        \ endif
+augroup END
 
-	augroup END
+augroup c
+  au!
+  au BufReadPre,FileReadPre *.c,*.cc,*.h,*.cp,*.cpp,*.hpp
+        \ set sw=2 ts=2 sts=2 expandtab
+augroup END
 
-	augroup c 
-		autocmd BufReadPre,FileReadPre *.c,*.cc,*.h,*.cp,*.cpp,*.hpp 
-		\ set sw=2 ts=2 sts=2 expandtab
-	augroup END
+augroup python
+  au!
+  au BufNewFile,BufRead *.py
+        \ set ts=4 sts=4 sw=4 tw=79 expandtab autoindent fileformat=unix nu
+  au FileType python map <buffer> <Leader>f :call Flake8()<CR>
+augroup END
 
-	augroup python
-		au BufNewFile,BufRead *.py
-		\ set ts=4 sts=4 sw=4 tw=79 expandtab autoindent fileformat=unix nu
-		autocmd FileType python map <buffer> <Leader>f :call Flake8()<CR>
-	augroup END
+augroup html
+  au!
+  au BufReadPre,FileReadPre *.html,*.htm,*.css,*.xml,*.js
+        \ set sw=2 ts=2 sts=2 expandtab autoindent fileformat=unix nu
+augroup END
 
-	augroup html
-		autocmd BufReadPre,FileReadPre *.html,*.htm,*.css,*.xml,*.js 
-		\ set sw=2 ts=2 sts=2 expandtab autoindent                fileformat=unix nu
-	augroup END
+augroup Binary
+  au!
+  au BufReadPre  *.bin,*.BIN,*.exe,*.o,*.obj,*.OBJ,*.rom,*.ROM let &bin=1
+  au BufReadPost *.bin,*.BIN,*.exe,*.o,*.obj,*.OBJ,*.rom,*.ROM if &bin | %!xxd
+  au BufReadPost *.bin,*.BIN,*.exe,*.o,*.obj,*.OBJ,*.rom,*.ROM set ft=xxd | endif
+  au BufWritePre *.bin,*.BIN,*.exe,*.o,*.obj,*.OBJ,*.rom,*.ROM if &bin | %!xxd -r
+  au BufWritePre *.bin,*.BIN,*.exe,*.o,*.obj,*.OBJ,*.rom,*.ROM endif
+  au BufWritePost *.bin,*.BIN,*.exe,*.o,*.obj,*.OBJ,*.rom,*.ROM if &bin | %!xxd
+  au BufWritePost *.bin,*.BIN,*.exe,*.o,*.obj,*.OBJ,*.rom,*.ROM set nomod | endif
+augroup END
 
-	augroup Binary
-	  au!
-	  au BufReadPre  *.bin,*.BIN,*.exe,*.o,*.obj,*.OBJ,*.rom,*.ROM let &bin=1
-	  au BufReadPost *.bin,*.BIN,*.exe,*.o,*.obj,*.OBJ,*.rom,*.ROM if &bin | %!xxd
-	  au BufReadPost *.bin,*.BIN,*.exe,*.o,*.obj,*.OBJ,*.rom,*.ROM set ft=xxd | endif
-	  au BufWritePre *.bin,*.BIN,*.exe,*.o,*.obj,*.OBJ,*.rom,*.ROM if &bin | %!xxd -r
-	  au BufWritePre *.bin,*.BIN,*.exe,*.o,*.obj,*.OBJ,*.rom,*.ROM endif
-	  au BufWritePost *.bin,*.BIN,*.exe,*.o,*.obj,*.OBJ,*.rom,*.ROM if &bin | %!xxd
-	  au BufWritePost *.bin,*.BIN,*.exe,*.o,*.obj,*.OBJ,*.rom,*.ROM set nomod | endif
-	augroup END
-	" add yaml stuffs
-	au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
-	autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
-else
-	set autoindent	" always on if no autocmd support
-
-endif " has("autocmd")
+" add yaml stuffs
+augroup yaml
+  au!
+  au BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
+  au FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+augroup END
 
 " Set continuation lines to indent only 4 spaces
 set cinoptions=+4,(4,g0,x
@@ -197,5 +199,4 @@ let g:netrw_altv=1          " open splits to the right
 let g:netrw_liststyle=3     " tree view
 let g:netrw_list_hide=netrw_gitignore#Hide()
 let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
-
 

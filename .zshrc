@@ -133,3 +133,4 @@ alias hex2dec='echo 16i \!$ p | tr a-f A-F |dc'
 alias dec2hex='echo 16o \!$ p |dc | tr A-F a-f'
 
 alias ctags='/usr/local/bin/ctags'
+alias activate="source ~/venv/bin/activate"
