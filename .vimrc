@@ -27,6 +27,7 @@ Plugin 'nvie/vim-flake8'
 Plugin 'stephpy/vim-yaml'
 Plugin 'chiel92/vim-autoformat'
 Plugin 'bitc/vim-bad-whitespace'
+Plugin 'sheerun/vim-polyglot'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
