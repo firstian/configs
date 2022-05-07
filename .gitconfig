@@ -1,0 +1,6 @@
+[user]
+	name = firstian
+	email = firstianus@gmail.com
+
+[init]
+	templateDir = ~/.config/git/template/
