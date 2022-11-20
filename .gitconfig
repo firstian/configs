@@ -3,4 +3,21 @@
 	email = firstianus@gmail.com
 
 [init]
+	defaultBranch = main
+[credential]
+	helper = cache --timeout=3600
+[core]
+	editor = vim
+[diff]
+	tool = vimdiff
+[merge]
+	tool = vimdiff
+[difftool]
+	prompt = false
+[alias]
+	st = status
+	co = checkout
+	cm = commit -m
+	ll = log --oneline
+[fetch]
 	templateDir = ~/.config/git/template/

@@ -139,20 +139,20 @@ augroup END
 augroup c
   au!
   au BufReadPre,FileReadPre *.c,*.cc,*.h,*.cp,*.cpp,*.hpp
-        \ set sw=2 ts=2 sts=2 expandtab
+        \ set sw=2 ts=2 sts=2 tw=79 expandtab autoindent fileformat=unix nu
 augroup END
 
 augroup python
   au!
   au BufNewFile,BufRead *.py
-        \ set ts=4 sts=4 sw=4 tw=79 expandtab autoindent fileformat=unix nu
+        \ set ts=2 sts=2 sw=2 tw=79 expandtab autoindent fileformat=unix nu
   au FileType python map <buffer> <Leader>f :call Flake8()<CR>
 augroup END
 
 augroup html
   au!
   au BufReadPre,FileReadPre *.html,*.htm,*.css,*.xml,*.js
-        \ set sw=2 ts=2 sts=2 expandtab autoindent fileformat=unix nu
+        \ set sw=2 ts=2 sts=2 tw=79 expandtab autoindent fileformat=unix nu
 augroup END
 
 augroup Binary
