@@ -201,3 +201,8 @@ let g:netrw_liststyle=3     " tree view
 let g:netrw_list_hide=netrw_gitignore#Hide()
 let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
 
+" Ignore whitespace in diff mode
+if &diff
+    " diff mode
+    set diffopt+=iwhite
+endif
