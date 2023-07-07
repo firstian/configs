@@ -178,6 +178,7 @@ set cinoptions=+4,(4,g0,x
 
 let python_highlight_all=1
 syntax enable
+set regexpengine=0
 
 " Set up vim to look for tags file in parent directories.
 set tags=tags;/
