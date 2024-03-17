@@ -70,7 +70,7 @@ HIST_STAMPS="mm/dd/yyyy"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(asdf git vi-mode)
+plugins=(asdf aws git history npm poetry screen vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -131,6 +131,8 @@ alias dec2hex='echo 16o \!$ p |dc | tr A-F a-f'
 
 alias ctags='/usr/local/bin/ctags'
 alias activate="source ./.venv/bin/activate"
+
+alias pn='pnpm'
 
 # Uncomment to profile zshrc
 # zprof
