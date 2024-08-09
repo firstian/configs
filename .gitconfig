@@ -20,4 +20,7 @@
 	cm = commit -m
 	ll = log --oneline
 [fetch]
-	templateDir = ~/.config/git/template/
+	prune = true
+
+[filter "strip-notebook-output"]
+	clean = "jupyter nbconvert --ClearOutputPreprocessor.enabled=True --ClearMetadataPreprocessor.enabled=True --to=notebook --stdin --stdout --log-level=ERROR"
