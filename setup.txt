@@ -40,3 +40,5 @@ asdf plugin add pnpm
 asdf install pnpm 9.14.2
 asdf global pnpm 9.14.2
 
+# Disable press&hold so command mode for vim plugin can repeat command in VS Code
+defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
