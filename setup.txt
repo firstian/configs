@@ -1,3 +1,8 @@
+# Update the hostname
+sudo scutil --set HostName <name>
+sudo scutil --set LocalHostName <name>
+sudo scutil --set ComputerName <name>
+
 # Install homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 echo >> /Users/joe/.zprofile
