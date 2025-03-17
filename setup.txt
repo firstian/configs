@@ -27,23 +27,26 @@ brew install --cask zoom docker discord signal
 
 
 # Set up dev tools
-git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.14.1
-source ~/.zshrc
+brew install asdf
+# Add the following to .zshrc
+export ASDF_DATA_DIR="$HOME/.asdf"
+export PATH="$ASDF_DATA_DIR/shims:$PATH"
+
 asdf plugin add python
 asdf install python 3.12.7
-asdf global python 3.12.7
+asdf set python 3.12.7
 
 asdf plugin-add poetry https://github.com/asdf-community/asdf-poetry.git
 asdf install poetry 1.8.4
-asdf global poetry 1.8.4
+asdf set poetry 1.8.4
 
 asdf plugin add nodejs
 asdf install nodejs 22.11.0
-asdf global nodejs 22.11.0
+asdf set nodejs 22.11.0
 
 asdf plugin add pnpm
 asdf install pnpm 9.14.2
-asdf global pnpm 9.14.2
+asdf set pnpm 9.14.2
 
 # Disable press&hold so command mode for vim plugin can repeat command in VS Code
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
