@@ -3,6 +3,9 @@ sudo scutil --set HostName <name>
 sudo scutil --set LocalHostName <name>
 sudo scutil --set ComputerName <name>
 
+# Install OMZ
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
 # Install homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 echo >> /Users/joe/.zprofile
