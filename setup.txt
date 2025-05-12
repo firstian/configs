@@ -8,48 +8,35 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 
 # Install homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-echo >> /Users/joe/.zprofile
-echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/joe/.zprofile
-eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # Clone config
 git clone https://github.com/firstian/configs
-cp -r configs/.gitconfig .
-cp -r configs/.gitignore .
-cp configs/.vimrc .
-cp configs/.zshrc .
+find configs -maxdepth 1 -type f -name ".*" -exec cp {} ~/ \;
 
 # Set up Vim
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-vim +PluginInstall +gall
+vim +PluginInstall
 
 # Install a bunch of stuff from homebrew
 brew install awscli gh db-browser-for-sqlite iterm2 jq graphviz tree htop gotop fd
 brew install --cask obsidian visual-studio-code rectangle brave-browser
 brew install --cask zoom docker discord signal
 
-
 # Set up dev tools
-brew install asdf
-# Add the following to .zshrc
-export ASDF_DATA_DIR="$HOME/.asdf"
-export PATH="$ASDF_DATA_DIR/shims:$PATH"
+brew install asdf pnpm
+curl -LsSf https://astral.sh/uv/install.sh | sh
 
 asdf plugin add python
 asdf install python 3.12.7
 asdf set python 3.12.7
 
-asdf plugin-add poetry https://github.com/asdf-community/asdf-poetry.git
-asdf install poetry 1.8.4
-asdf set poetry 1.8.4
+# asdf plugin-add poetry https://github.com/asdf-community/asdf-poetry.git
+# asdf install poetry 1.8.4
+# asdf set poetry 1.8.4
 
 asdf plugin add nodejs
 asdf install nodejs 22.11.0
 asdf set nodejs 22.11.0
-
-asdf plugin add pnpm
-asdf install pnpm 9.14.2
-asdf set pnpm 9.14.2
 
 # Disable press&hold so command mode for vim plugin can repeat command in VS Code
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
