@@ -1,26 +1,71 @@
 [user]
-	name = firstian
+	name = Joe Chan
 	email = firstianus@gmail.com
+	github = firstian
 
 [init]
 	defaultBranch = main
 [credential]
 	helper = cache --timeout=3600
+[color "branch"]
+	current = yellow bold
+	local = green bold
+	remote = cyan bold
+[color "diff"]
+	meta = yellow bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
+[color "status"]
+	added = green bold
+	changed = yellow bold
+	untracked = red bold
 [core]
 	editor = vim
+	pager = delta
+[delta]
+	features = decorations
+	line-numbers = true
+	navigate = true
+[delta "decorations"]
+	minus-style = red bold normal
+	plus-style = green bold normal
+	minus-emph-style = white bold red
+	minus-non-emph-style = red bold normal
+	plus-emph-style = white bold green
+	plus-non-emph-style = green bold normal
+	file-style = yellow bold none
+	file-decoration-style = yellow box
+	hunk-header-style = magenta bold
+	hunk-header-decoration-style = magenta box
+	minus-empty-line-marker-style = normal normal
+	plus-empty-line-marker-style = normal normal
+[blame]
+	coloring = highlightRecent
 [diff]
+	algorithm = histogram
+	colorMoved = plain
 	tool = vimdiff
+[fetch]
+	prune = true
+	pruneTags = true
+	all = true
 [merge]
 	tool = vimdiff
+[rebase]
+	autoSquash = true
+	updateRefs = true
 [difftool]
 	prompt = false
 [alias]
-	st = status
+	st = status --short
 	co = checkout
 	cm = commit -m
 	ll = log --oneline
-[fetch]
-	prune = true
-
+	ssdiff = -c delta.features=side-by-side diff
+	last = checkout HEAD~1
 [filter "strip-notebook-output"]
 	clean = "jupyter nbconvert --ClearOutputPreprocessor.enabled=True --ClearMetadataPreprocessor.enabled=True --to=notebook --stdin --stdout --log-level=ERROR"
+[blame]
+	coloring = highlightRecent
