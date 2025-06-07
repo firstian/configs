@@ -74,6 +74,9 @@ plugins=(aws git history npm poetry screen vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
+# A very simple way to changet the prompt to display an icon.
+export ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[blue]%} (%{$fg[red]%}"
+
 # Add the username and host to the prompt for ssh sessions.
 if [[ -n "$SSH_CLIENT" ]] || [[ -n "$SSH_TTY" ]] || [[ "$SSH_CONNECTION" ]]; then
     export PS1="%n@%m:% ${PS1}"
@@ -92,8 +95,8 @@ fi
 # else
 #   export EDITOR='mvim'
 # fi
-export EDITOR='vim'
-export VISUAL='vim'
+export EDITOR='nvim'
+export VISUAL='nvim'
 
 # Directory changing
 setopt CDABLE_VARS
@@ -130,6 +133,7 @@ alias mkdir='mkdir -p'
 
 alias h='history'
 alias m='bat'
+alias vi="nvim"
 
 alias tgz='tar -cvzf'
 alias untgz='tar -xvzf'
