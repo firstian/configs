@@ -1,0 +1,50 @@
+return {
+  'nvim-neo-tree/neo-tree.nvim',
+  branch = 'v3.x',
+  dependencies = {
+    'nvim-lua/plenary.nvim',
+    'nvim-tree/nvim-web-devicons',
+    'MunifTanjim/nui.nvim',
+  },
+  lazy = false, -- neo-tree will lazily load itself
+  ---@module "neo-tree"
+  ---@type neotree.Config?
+  opts = {
+    filesystem = {
+      filtered_items = {
+        visible = true,
+        hide_dotfiles = false,
+        hide_gitignored = false,
+        never_show = {
+          '.DS_Store',
+          '.git',
+        },
+      },
+      -- hijack_netrw_behavior = 'open_current',
+      window = {
+        mappings = {
+          ['ee'] = 'close_window',
+        },
+      },
+    },
+    default_component_configs = {
+      git_status = {
+        symbols = {
+          untracked = '?',
+          ignored = '◌',
+          unstaged = '✗',
+          staged = '✓',
+          conflict = '',
+        },
+      },
+    },
+  },
+  keys = {
+    {
+      '<leader>ee',
+      '<Cmd>Neotree reveal toggle<cr>',
+      silent = true,
+      { desc = 'Toggle file explorer' },
+    },
+  },
+}

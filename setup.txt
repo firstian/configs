@@ -11,32 +11,34 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 
 # Clone config
 git clone https://github.com/firstian/configs
-find configs -maxdepth 1 -type f -name ".*" -exec cp {} ~/ \;
+find configs -maxdepth 1 -type f -name ".*" -exec cp -r {} ~/ \;
 
 # Set up Vim
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 vim +PluginInstall
 
 # Install a bunch of stuff from homebrew
-brew install awscli gh db-browser-for-sqlite iterm2 jq graphviz tree htop gotop fd git-delta git-lfs
+brew install bash bat delta fd fzf gotop htop ripgrep tree wget jesseduffield/lazygit/lazygit
+brew install awscli gh db-browser-for-sqlite iterm2 jq graphviz git-lfs
 brew install --cask obsidian visual-studio-code rectangle brave-browser
 brew install --cask zoom docker discord signal
+brew search '/font-.*-nerd-font/' | awk '{ print $1 }' | xargs brew install --cask
 
 # Set up dev tools
 brew install asdf pnpm
 curl -LsSf https://astral.sh/uv/install.sh | sh
 
 asdf plugin add python
-asdf install python 3.12.7
-asdf set python 3.12.7
+asdf install python 3.13.3
+asdf set python 3.13.3
 
 # asdf plugin-add poetry https://github.com/asdf-community/asdf-poetry.git
 # asdf install poetry 1.8.4
 # asdf set poetry 1.8.4
 
 asdf plugin add nodejs
-asdf install nodejs 22.11.0
-asdf set nodejs 22.11.0
+asdf install nodejs 24.1.0
+asdf set nodejs 24.1.0
 
 # Disable press&hold so command mode for vim plugin can repeat command in VS Code
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false

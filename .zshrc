@@ -74,6 +74,11 @@ plugins=(aws git history npm poetry screen vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
+# Add the username and host to the prompt for ssh sessions.
+if [[ -n "$SSH_CLIENT" ]] || [[ -n "$SSH_TTY" ]] || [[ "$SSH_CONNECTION" ]]; then
+    export PS1="%n@%m:% ${PS1}"
+fi
+
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -124,7 +129,7 @@ alias rm='rm -i'
 alias mkdir='mkdir -p'
 
 alias h='history'
-alias m='less'
+alias m='bat'
 
 alias tgz='tar -cvzf'
 alias untgz='tar -xvzf'
