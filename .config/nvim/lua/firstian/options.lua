@@ -57,6 +57,14 @@ vim.g.netrw_liststyle = 3
 -- custom global variable
 vim.g.have_nerd_font = true
 
+-- code folding
+opt.foldmethod = 'expr'
+opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+opt.foldtext = '' -- first line is still syntax highlighted.
+opt.foldnestmax = 4
+opt.foldlevel = 99
+opt.foldlevelstart = 1
+
 -- Disable netrw altogether to prevent flashing because neotree is lazily loaded.
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
