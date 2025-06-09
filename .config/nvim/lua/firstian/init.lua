@@ -33,7 +33,7 @@ local autoCommands = {
   -- other autocommands
   open_folds = {
     --{ 'BufReadPost,FileReadPost', '*', 'normal zR' },
-    { 'BufEnter,BufWinEnter', '*', 'normal zR' },
+    { 'BufReadPost,BufEnter,BufWinEnter,FileReadPost', '*', 'normal zR' },
   },
 }
 
