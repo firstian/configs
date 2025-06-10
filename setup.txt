@@ -9,20 +9,27 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 # Install homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-# Clone config
+# Install some basic stuff to bootstrap
+brew install bash bat delta fd fzf gotop htop stow tree wget
+
+# Stuff needed by nvim
+brew install ripgrep jesseduffield/lazygit/lazygit
+brew search '/font-.*-nerd-font/' | awk '{ print $1 }' | xargs brew install --cask
+brew install neovim
+
+# Clone and set up config
 git clone https://github.com/firstian/configs
-find configs -maxdepth 1 -type f -name ".*" -exec cp -r {} ~/ \;
+# Run the setup script in a subshell to preserve cwd
+(cd configs && ./setup_dotfiles.sh)
 
 # Set up Vim
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-vim +PluginInstall
+# git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+# vim +PluginInstall
 
-# Install a bunch of stuff from homebrew
-brew install bash bat delta fd fzf gotop htop ripgrep tree stow wget jesseduffield/lazygit/lazygit
+# Install more stuff from homebrew
 brew install awscli gh db-browser-for-sqlite iterm2 jq graphviz git-lfs
 brew install --cask obsidian visual-studio-code rectangle brave-browser
 brew install --cask zoom docker discord signal
-brew search '/font-.*-nerd-font/' | awk '{ print $1 }' | xargs brew install --cask
 
 # Set up dev tools
 brew install asdf pnpm
