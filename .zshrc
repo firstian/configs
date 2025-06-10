@@ -134,6 +134,8 @@ alias mkdir='mkdir -p'
 alias h='history'
 alias m='bat'
 alias vi="nvim"
+alias view="vi -R"
+alias vimdiff="vi -d"
 
 alias tgz='tar -cvzf'
 alias untgz='tar -xvzf'

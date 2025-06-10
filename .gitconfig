@@ -22,7 +22,7 @@
 	changed = yellow bold
 	untracked = red bold
 [core]
-	editor = vim
+	editor = nvim
 	pager = delta
 [delta]
 	features = decorations
