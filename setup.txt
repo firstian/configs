@@ -33,6 +33,7 @@ brew install --cask zoom docker discord onyx signal
 
 # Set up dev tools
 brew install asdf pnpm
+pnpm setup
 curl -LsSf https://astral.sh/uv/install.sh | sh
 
 asdf plugin add python
