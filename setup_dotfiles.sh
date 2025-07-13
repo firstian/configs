@@ -2,7 +2,7 @@
 
 stow --dotfile git
 stow --dotfile zsh
-stow vim -t ~/.config
+stow dot-config -t ~/.config
 
 # These need to be customize anyway.
 # stow ssh -t ~/.ssh
