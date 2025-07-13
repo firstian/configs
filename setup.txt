@@ -28,7 +28,7 @@ git clone https://github.com/firstian/configs
 
 # Install more stuff from homebrew
 brew install awscli gh db-browser-for-sqlite iterm2 jq graphviz git-lfs
-brew install --cask obsidian visual-studio-code rectangle brave-browser
+brew install --cask ghostty obsidian visual-studio-code rectangle brave-browser
 brew install --cask zoom docker discord onyx signal
 
 # Set up dev tools
