@@ -125,9 +125,9 @@ setopt BANG_HIST
 alias cp='cp -i'
 alias cpr='cp -r'
 alias ls='ls -FG'
-alias la='ls -a'
-alias lla='ls -al'
-alias lm='ls -al | m'
+alias la='ls -A'
+alias lla='ls -Al'
+alias lm='ls -Al | m'
 alias rm='rm -i'
 alias mkdir='mkdir -p'
 

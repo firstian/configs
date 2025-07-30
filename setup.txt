@@ -10,7 +10,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # Install some basic stuff to bootstrap
-brew install bash bat delta fd fzf gotop htop stow tree wget
+brew install bash bat delta fd fzf gotop htop just stow tree wget
 
 # Stuff needed by nvim
 brew install ripgrep jesseduffield/lazygit/lazygit
