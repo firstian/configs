@@ -3,6 +3,9 @@ sudo scutil --set HostName <name>
 sudo scutil --set LocalHostName <name>
 sudo scutil --set ComputerName <name>
 
+#install xcode tools
+xcode-select --install
+
 # Install OMZ
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
