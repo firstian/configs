@@ -21,15 +21,16 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 
 # Clone and set up config
 git clone https://github.com/firstian/configs
-# Run the setup script in a subshell to preserve cwd
-(cd configs && ./setup_dotfiles.sh && source ~/.zshrc)
 
 # Install homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-eval "$(/opt/homebrewbin/brew shellenv)"
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # Install some basic stuff to bootstrap
-brew install bash bat delta fd fzf gotop htop just stow tree wget
+brew install bash bat delta fd fzf gotop htop just stow tree wget xz
+
+# Run the setup script in a subshell to preserve cwd, need stow.
+(cd configs && ./setup_dotfiles.sh && source ~/.zshrc)
 
 # Stuff needed by nvim
 brew install ripgrep jesseduffield/lazygit/lazygit
@@ -51,8 +52,8 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 brew install asdf
 
 asdf plugin add python
-asdf install python 3.13.5
-asdf set python 3.13.5
+asdf install python 3.14.50
+asdf set python 3.14.0
 
 # asdf plugin-add poetry https://github.com/asdf-community/asdf-poetry.git
 # asdf install poetry 1.8.4
