@@ -69,6 +69,9 @@ pnpm setup
 # Disable press&hold so command mode for vim plugin can repeat command in VS Code
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 
+# Allow CTRL-CMD drag window from any part of the window
+defaults write -g NSWindowShouldDragOnGesture -bool true
+
 # Manual changes in System Preferences:
 - Keyboard
   - Modifier key change Caps Lock to Esc
